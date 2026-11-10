@@ -22,7 +22,7 @@ export async function adicionarBotaoForcarCriarLobby() {
         'class': 'WasdButton WasdButton--primary WasdButton--lg WasdButton--block draw-orange btn-visible',
         'type': 'button',
         'text': text,
-        'title': '[MozzieGM GC]: Vai ficar tentando criar a lobby até conseguir (caso o limite máximo de lobbies tenha sido ultrapassado)'
+        'title': '[Snoozie GC]: Vai ficar tentando criar a lobby até conseguir (caso o limite máximo de lobbies tenha sido ultrapassado)'
       } );
 
       $extWrapper.prepend( $button );

@@ -2,7 +2,7 @@
 
 ## 1.0.1
 
-- Rebrand completo para MozzieGM GC: tema roxo, logo próprio, nome e versão 1.0.1
+- Rebrand completo para Snoozie GC: tema roxo, logo próprio, nome e versão 1.0.1
 - KDR e dados do mês na Minha Sala e nas lobbies (via API, sem depender do título antigo)
 - Lupa (raio-X) só em cards de sala reais; removida a lupa órfã do card promocional RANKED
 - Painel de configurações interno: gaveta lateral dentro do site + botão flutuante + clique no ícone da toolbar (sem janela popup)

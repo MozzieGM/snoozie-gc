@@ -1,8 +1,8 @@
-# MozzieGM GC
+# Snoozie GC
 
 Extensão para navegador com melhorias para a plataforma [GamersClub](https://gamersclub.com.br/).
 
-Criada e mantida por **MozzieGM**.
+Criada e mantida por **Snoozie**.
 
 ## Desenvolvimento
 

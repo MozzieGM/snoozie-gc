@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "MozzieGM GC",
+  "name": "Snoozie GC",
   "description": "Extensão para o Google Chrome que adiciona algumas melhorias na plataforma da GamersClub.",
   "version": "1.0.1",
   "icons": {
@@ -92,7 +92,7 @@
       "48": "images/icon_48.png",
       "128": "images/icon_128.png"
     },
-    "default_title": "MozzieGM GC — abrir painel"
+    "default_title": "Snoozie GC — abrir painel"
   },
   "background": {
     "service_worker": "background.js"

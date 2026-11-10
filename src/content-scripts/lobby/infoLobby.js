@@ -2,7 +2,7 @@ import { getPlayerInfo } from './getPlayerInfo';
 import { getPlayerLinks } from '../../lib/playerLinks';
 import { GC_URL } from '../../lib/constants';
 
-const IMAGE_ALT = '[MozzieGM GC]: Buscar informações da lobby';
+const IMAGE_ALT = '[Snoozie GC]: Buscar informações da lobby';
 
 const createDiv = lobbyId => $( '<div/>',
   {

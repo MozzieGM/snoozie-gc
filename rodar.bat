@@ -1,6 +1,6 @@
 @echo off
 cd /d "%~dp0"
-echo === MozzieGM GC ===
+echo === Snoozie GC ===
 where node >nul 2>nul
 if errorlevel 1 (
   echo [ERRO] Node.js nao encontrado. Instale em https://nodejs.org/

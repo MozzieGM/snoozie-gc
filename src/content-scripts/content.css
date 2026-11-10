@@ -283,8 +283,8 @@ input[type="range"].filterKdr::-ms-track {
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  background: linear-gradient(135deg, rgba(36, 18, 67, 0.94), rgba(13, 10, 23, 0.95));
-  border: 1px solid rgba(168, 85, 247, 0.55);
+  background: linear-gradient(135deg, rgba(24, 48, 16, 0.94), rgba(13, 10, 23, 0.95));
+  border: 1px solid rgba(57, 255, 20, 0.45);
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.6), 0 0 24px rgba(168, 85, 247, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.07);
   padding: 10px 18px;
   border-radius: 16px;
@@ -314,8 +314,8 @@ input[type="range"].filterKdr::-ms-track {
   width: 44px;
   height: 44px;
   object-fit: cover;
-  border: 2px solid #a855f7;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.8);
+  border: 2px solid #39ff14;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.8);
 }
 
 .bar-info-name {
@@ -389,7 +389,7 @@ input[type="range"].filterKdr::-ms-track {
 }
 
 .gcbooster_lupa img {
-  filter: hue-rotate(215deg) saturate(1.5);
+  filter: hue-rotate(80deg) saturate(1.7);
 }
 
 .infos_lobby {
@@ -1178,7 +1178,7 @@ input[type="range"].filterKdr::-ms-track {
 }
 
 
-/* ---------- Painel interno MozzieGM (gaveta lateral) ---------- */
+/* ---------- Painel interno Snoozie (gaveta lateral) ---------- */
 #mg-drawer-root {
   position: relative;
   z-index: 2147483000;
@@ -1191,11 +1191,11 @@ input[type="range"].filterKdr::-ms-track {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  border: 2px solid #a855f7;
-  background: #150d28;
+  border: 2px solid #39ff14;
+  background: #0c150a;
   padding: 4px;
   cursor: pointer;
-  box-shadow: 0 0 18px rgba(168, 85, 247, 0.75), 0 6px 20px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 18px rgba(57, 255, 20, 0.6), 0 6px 20px rgba(0, 0, 0, 0.6);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: mg-fab-pulse 2.8s ease-in-out infinite;
 }
@@ -1219,8 +1219,8 @@ input[type="range"].filterKdr::-ms-track {
 }
 
 @keyframes mg-fab-pulse {
-  0%, 100% { box-shadow: 0 0 12px rgba(168, 85, 247, 0.6), 0 6px 20px rgba(0, 0, 0, 0.6); }
-  50% { box-shadow: 0 0 28px rgba(168, 85, 247, 1), 0 6px 20px rgba(0, 0, 0, 0.6); }
+  0%, 100% { box-shadow: 0 0 12px rgba(57, 255, 20, 0.5), 0 6px 20px rgba(0, 0, 0, 0.6); }
+  50% { box-shadow: 0 0 28px rgba(57, 255, 20, 0.9), 0 6px 20px rgba(0, 0, 0, 0.6); }
 }
 
 #mg-drawer {
@@ -1233,8 +1233,8 @@ input[type="range"].filterKdr::-ms-track {
   display: flex;
   flex-direction: column;
   background: #0b0714;
-  border-left: 1px solid rgba(168, 85, 247, 0.5);
-  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7), -4px 0 24px rgba(168, 85, 247, 0.35);
+  border-left: 1px solid rgba(57, 255, 20, 0.45);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7), -4px 0 24px rgba(57, 255, 20, 0.28);
   transform: translateX(105%);
   transition: transform 0.35s cubic-bezier(0.32, 0.72, 0.35, 1);
   overflow: hidden;
@@ -1249,8 +1249,8 @@ input[type="range"].filterKdr::-ms-track {
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
-  background: linear-gradient(135deg, #241243 0%, #150d28 70%);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, #1d3a12 0%, #150d28 70%);
+  border-bottom: 1px solid rgba(57, 255, 20, 0.35);
   flex: 0 0 auto;
 }
 
@@ -1301,7 +1301,8 @@ input[type="range"].filterKdr::-ms-track {
 }
 
 #mg-drawer-close:hover {
-  background: #a855f7;
+  background: #39ff14;
+  color: #06130a;
   transform: rotate(90deg);
 }
 

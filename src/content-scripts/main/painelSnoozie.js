@@ -1,6 +1,6 @@
-// Painel interno MozzieGM: botão flutuante + gaveta lateral com as
+// Painel interno Snoozie: botão flutuante + gaveta lateral com as
 // configurações (index.html) injetados direto na página da GC.
-export const injetarPainelMozzie = () => {
+export const injetarPainelSnoozie = () => {
   if ( document.getElementById( 'mg-drawer-root' ) ) { return; }
 
   const logoUrl = chrome.runtime.getURL( 'images/icon_128.png' );
@@ -9,20 +9,20 @@ export const injetarPainelMozzie = () => {
   const root = document.createElement( 'div' );
   root.id = 'mg-drawer-root';
   root.innerHTML =
-    '<button id="mg-fab" title="MozzieGM GC — Configurações">' +
-      `<img src="${logoUrl}" alt="MozzieGM" />` +
+    '<button id="mg-fab" title="Snoozie GC — Configurações">' +
+      `<img src="${logoUrl}" alt="Snoozie" />` +
     '</button>' +
     '<div id="mg-drawer" aria-hidden="true">' +
       '<div class="mg-drawer-header">' +
-        `<img src="${logoUrl}" alt="MozzieGM" />` +
-        '<div class="mg-drawer-title"><strong>MozzieGM GC</strong><span>painel interno</span></div>' +
+        `<img src="${logoUrl}" alt="Snoozie" />` +
+        '<div class="mg-drawer-title"><strong>Snoozie GC</strong><span>painel interno</span></div>' +
         '<button id="mg-drawer-close" title="Fechar" aria-label="Fechar">' +
           '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">' +
             '<path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>' +
           '</svg>' +
         '</button>' +
       '</div>' +
-      '<iframe id="mg-drawer-frame" title="MozzieGM Configurações"></iframe>' +
+      '<iframe id="mg-drawer-frame" title="Snoozie Configurações"></iframe>' +
     '</div>';
 
   ( document.documentElement || document.body ).appendChild( root );

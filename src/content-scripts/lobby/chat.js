@@ -36,7 +36,7 @@ export const ocultarFiltrosSala = async () => {
       const content = document.createElement( 'button' );
       content.classList.add( 'gcboost-show-filter' );
       content.classList.add( 'draw-orange' );
-      content.title = '[MozzieGM GC]: Ocultar Filtros';
+      content.title = '[Snoozie GC]: Ocultar Filtros';
 
       content.innerHTML = '<span class="gcboost-arrow-down" />';
 

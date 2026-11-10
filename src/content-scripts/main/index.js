@@ -1,7 +1,7 @@
 import { autoCompactMode } from './autoCompactMode';
 import { autoDarkMode } from './autoDarkMode';
 import { adicionarBarraLevel } from './barraLevel';
-import { injetarPainelMozzie } from './painelMozzie';
+import { injetarPainelSnoozie } from './painelSnoozie';
 import injectPageScripts from './injectPageScripts';
 
 // Silencia "Extension context invalidated" do script antigo após reload da extensão.
@@ -22,7 +22,7 @@ const initGcBooster = async () => {
   injectPageScripts();
 
   // Painel interno de configurações (gaveta lateral), sempre disponível
-  injetarPainelMozzie();
+  injetarPainelSnoozie();
 
   if ( generalOptions.mostrarLevelProgress !== false ) {
     adicionarBarraLevel();

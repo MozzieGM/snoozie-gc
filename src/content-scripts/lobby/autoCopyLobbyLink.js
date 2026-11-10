@@ -65,7 +65,7 @@ export const autoCopyLobbyLink = mutations => {
             const copySuccess = await copyToClipboard( url );
 
             if ( copySuccess ) {
-              alertaMsg( '[MozzieGM GC] - Link da lobby copiado automaticamente!' );
+              alertaMsg( '[Snoozie GC] - Link da lobby copiado automaticamente!' );
               lobbyLinkCopied = true;
             }
           } catch ( error ) {

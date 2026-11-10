@@ -379,7 +379,7 @@ export const showKdrMatch = () => {
             'align-items': 'center',
             'justify-content': 'center'
           },
-          'title': `[MozzieGM GC]: KDR: ${playerKdr}`,
+          'title': `[Snoozie GC]: KDR: ${playerKdr}`,
           'text': playerKdr
         } );
 
@@ -441,7 +441,7 @@ const injectKdrMyRoom = ( $player, playerId, playerKdr, infoPlayer ) => {
   const $kdrElement = $( '<span/>', {
     'class': 'gcbooster-kdr-myroom',
     'text': playerKdr,
-    'title': `[MozzieGM GC] KDR: ${playerKdr}${adr} | Mês: ${wins}V/${losses}D`,
+    'title': `[Snoozie GC] KDR: ${playerKdr}${adr} | Mês: ${wins}V/${losses}D`,
     'css': {
       'background': colorKdr,
       'color': '#fff',

@@ -19,7 +19,7 @@ export const buildTimer = ( warmupFinished, targetContainer, timeleft, maxtime =
 
   const endTime = Math.floor( Date.now() / 1000 ) + timeleft;
   let baseContent = `
-          <div id="warmup_left_wrapper" title="[MozzieGM GC]: Tempo restante">Warmup: 
+          <div id="warmup_left_wrapper" title="[Snoozie GC]: Tempo restante">Warmup: 
             <b style="color: ${getColor( timeleft )}">${timeUtil( timeleft )}</b>
           </div>
           <progress style="accent-color: ${getColor( timeleft )}" id="warmup_progressbar" value="${timeleft}" max="${maxtime}"></progress>`;
@@ -109,7 +109,7 @@ export const partidaInfo = async () => {
             if ( needDisc && !discElement ) {
               parentDisclaimer.append(
                 `<button id="botaoDiscordNoDOM" class="WasdButton WasdButton--success WasdButton--lg botaoDiscordNoDOM-sc-1ylcea4-4"
-                  title="[MozzieGM GC]: Clique para enviar no discord">Enviar no Discord</button>`
+                  title="[Snoozie GC]: Clique para enviar no discord">Enviar no Discord</button>`
               );
               document.getElementById( 'botaoDiscordNoDOM' ).addEventListener( 'click', async function () {
                 await sendMatchInfo( result.webhookLink, listenGame.data.data );

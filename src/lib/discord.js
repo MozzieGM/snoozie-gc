@@ -10,7 +10,7 @@ export async function send( url, body ) {
 
 export async function testWebhook( url ) {
   return send( url, {
-    title: 'MozzieGM GC',
+    title: 'Snoozie GC',
     color: '4961603',
     fields: [
       {

@@ -69,7 +69,7 @@ export async function adicionarBotaoAutoComplete() {
         'class': 'WasdButton WasdButton--primary WasdButton--lg WasdButton--block draw-orange btn-visible',
         'type': 'button',
         'text': completarPartidaText,
-        'title': `[MozzieGM GC]: ${completarPartidaText}`
+        'title': `[Snoozie GC]: ${completarPartidaText}`
       } );
 
       $extWrapper.append( $button );
