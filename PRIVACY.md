@@ -20,4 +20,4 @@ A extensão lê apenas informações públicas já exibidas nas páginas da Game
 
 ## Contato
 
-Dúvidas sobre privacidade: abra uma issue em https://github.com/MozzieGM/gc-turbo/issues
+Dúvidas sobre privacidade: abra uma issue em https://github.com/MozzieGM/snoozie-gc/issues

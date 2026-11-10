@@ -1,7 +1,7 @@
 {
   "name": "snoozie-gc",
   "description": "Extensão para navegadores que adiciona algumas melhorias na plataforma da GamersClub",
-  "repository": "https://github.com/MozzieGM/gc-turbo",
+  "repository": "https://github.com/MozzieGM/snoozie-gc",
   "version": "1.0.1",
   "main": "index.js",
   "license": "GPL-3.0",
