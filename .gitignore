@@ -95,3 +95,6 @@ Thumbs.db
 
 *test.js
 .env
+
+# Pacote da loja (subir via Releases/painel, não commitar)
+*.zip

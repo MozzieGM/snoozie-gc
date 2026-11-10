@@ -19,6 +19,7 @@ import { ocultarSugestaoDeLobbies } from './ocultarSugestaoDeLobbies';
 import { showStats } from './showStats';
 import { lobbyMapSuggestions } from './lobbyMapSuggestions';
 import { showPlayerSoloStats } from './showPlayerSoloStats';
+import { adicionarSeloSnoozie } from './seloSnoozie';
 
 // Contexto antigo após reload da extensão: só recarregar a página (F5) resolve.
 // Silencia o spam de "Extension context invalidated" nos pollings.
@@ -86,6 +87,7 @@ const initLobby = async () => {
   lobbyMapSuggestions();
   showPlayerSoloStats();
   showKdrMatch();
+  adicionarSeloSnoozie();
   adicionarFiltroKdr();
 };
 
