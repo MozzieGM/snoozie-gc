@@ -1,0 +1,114 @@
+import { autoAceitarReady, autoAceitarReadySetInterval, resetAutoAceitarReadyState } from './autoAceitarReady';
+import { autoConcordarTermosRanked } from './autoConcordarTermosRanked';
+import { autoFixarMenuLobby } from './autoFixarMenuLobby';
+import { adicionarBotaoAutoComplete } from './botaoAutoComplete';
+import { adicionarBotaoForcarCriarLobby } from './botaoForcarCriarLobby';
+import { lobbyLink } from './lobbyLink';
+import { autoCopyLobbyLink, resetLobbyLinkState } from './autoCopyLobbyLink';
+import { mostrarInfoPlayerIntervaler, mostrarKdr, mostrarKdrDesafios, mostrarKdrMinhaSala, mostrarKdrRanked, showKdrMatch } from './mostrarKdr';
+import { partidaInfo } from './partidaInfo';
+import { somReady, somReadySetInterval, tocarSomSeVoceForExpulsoDaLobby } from './sons';
+import { adicionarFiltroKdr } from './filtrarKdr';
+import { iniciarLupa } from './infoLobby';
+
+import { autoKickNegativados } from './autoKickNegativados';
+import { autoMostrarIp } from './autoMostrarIp';
+import { chatFixoDireita, ocultarChat, ocultarFiltrosSala } from './chat';
+import { ocultarNotificacaoComplete } from './ocultarNotificacaoComplete';
+import { ocultarSugestaoDeLobbies } from './ocultarSugestaoDeLobbies';
+import { showStats } from './showStats';
+import { lobbyMapSuggestions } from './lobbyMapSuggestions';
+import { showPlayerSoloStats } from './showPlayerSoloStats';
+
+// Contexto antigo após reload da extensão: só recarregar a página (F5) resolve.
+// Silencia o spam de "Extension context invalidated" nos pollings.
+window.addEventListener( 'unhandledrejection', event => {
+  if ( String( event.reason?.message || event.reason || '' ).includes( 'Extension context invalidated' ) ) {
+    event.preventDefault();
+  }
+} );
+
+chrome.storage.sync.get( null, function ( _result ) {
+  initLobby();
+} );
+
+const initLobby = async () => {
+  // Resetar estado do auto copy lobby link quando entrar no lobby
+  resetLobbyLinkState();
+  resetAutoAceitarReadyState();
+
+  // Esses dois não estão funcionando, verificar o motivo, criei o intervaler pra substituir por enquanto...
+  criarObserver( '.lobby,.ranking', somReady );
+  criarObserver( '.lobby,.ranking', autoAceitarReady );
+  criarObserver( '.lobby,.ranking', autoConcordarTermosRanked );
+
+  criarObserver( '#lobbyContent', autoFixarMenuLobby );
+  criarObserver( '.lobby', lobbyLink );
+  criarObserver( '.lobby', autoCopyLobbyLink );
+
+  criarObserver( '#lobbies-wrapper', mostrarKdr );
+  iniciarLupa();
+  criarObserver( '#GamersClubCSApp-globals-globalToaster', tocarSomSeVoceForExpulsoDaLobby );
+
+
+  mostrarKdrDesafios();
+
+  // Esconde a sugestão de lobbies para entrar
+  ocultarSugestaoDeLobbies();
+
+  //  Oculta as notificações de complete
+  ocultarNotificacaoComplete();
+
+  // Clicar automáticamente no Ready, temporário.
+  somReadySetInterval();
+  autoAceitarReadySetInterval();
+  // Feature para aceitar complete automatico
+  adicionarBotaoAutoComplete();
+  // Feature pra criar lobby caso full
+  adicionarBotaoForcarCriarLobby();
+  // Feature para mostrar kdr dos players
+  mostrarKdrRanked();
+  mostrarInfoPlayerIntervaler();
+  mostrarKdrMinhaSala();
+  // Feature de discord na hora de copiar o ip
+  partidaInfo();
+  //Feature que mostra ip assim que server é liberado
+  autoMostrarIp();
+  // Feature que oculta o chat durante a criação de lobbies
+  ocultarChat();
+  // Feature que fixa o chat na direita
+  chatFixoDireita();
+  ocultarFiltrosSala();
+  // Feature para auto remover negativados
+  autoKickNegativados();
+  // Feature para exibir as estatísticas do jogador
+  showStats();
+  lobbyMapSuggestions();
+  showPlayerSoloStats();
+  showKdrMatch();
+  adicionarFiltroKdr();
+};
+
+const criarObserver = ( seletor, exec, type ) => {
+  const observer = new MutationObserver( mutations => {
+
+    let shouldExec = false;
+    mutations.forEach( mutation => {
+      // Verifica se o elemento que sofreu a mutação é o seletor ou está dentro dele
+      if ( $( mutation.target ).is( seletor ) || $( mutation.target ).closest( seletor ).length ) {
+        shouldExec = true;
+      }
+    } );
+
+    if ( shouldExec ) { exec( mutations, type ); }
+  } );
+
+  // Monitora o documento inteiro para pegar elementos que ainda não foram inseridos
+  observer.observe( document.body, {
+    childList: true,
+    subtree: true,
+    attributes: false,
+    characterData: false
+  } );
+
+};

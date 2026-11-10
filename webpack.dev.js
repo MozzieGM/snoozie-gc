@@ -1,0 +1,43 @@
+const path = require( 'path' );
+const CopyPlugin = require( 'copy-webpack-plugin' );
+const webpack = require( 'webpack' );
+const glob = require( 'glob' );
+
+const resolveEntries = pattern => glob.sync( pattern ).map( entry => path.resolve( __dirname, entry ) );
+const contentScripts = name => resolveEntries( `./src/content-scripts/${name}/*.js` );
+
+module.exports = {
+  mode: 'development',
+  entry: {
+    'index': resolveEntries( './src/options/*.js' ),
+    'background': path.resolve( __dirname, './src/background.js' ),
+    'content-scripts/main': contentScripts( 'main' ),
+    'content-scripts/lobby': contentScripts( 'lobby' ),
+    'content-scripts/missions': contentScripts( 'missions' ),
+    'content-scripts/team': contentScripts( 'team' ),
+    'content-scripts/my-matches': contentScripts( 'my-matches' ),
+    'content-scripts/profile': contentScripts( 'profile' )
+  },
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, 'src')
+    }
+  },
+  devtool: 'source-map',
+  output: {
+    clean: true,
+    filename: '[name].js',
+    path: path.resolve( __dirname, './dist' )
+  },
+  experiments: { topLevelAwait: true },
+  plugins: [
+    new CopyPlugin( {
+      patterns: [ 'public', 'manifest.json', 'src/options/index.html', 'src/content-scripts/content.css' ],
+      options: {}
+    } ),
+    new webpack.ProvidePlugin( {
+      $: 'jquery',
+      jQuery: 'jquery'
+    } )
+  ]
+};

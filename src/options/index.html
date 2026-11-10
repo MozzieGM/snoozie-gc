@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<!-- HTML5 -->
+<html>
+
+<head>
+  <title>MozzieGM GC</title>
+
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700|Oswald:300,400,700|Teko"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="crosshair-bg" aria-hidden="true"></div>
+  <div class="hud-scan" aria-hidden="true"></div>
+  <div class="header">
+    <div class="header-brand">
+      <span class="logo" translation-key="gamersclub-booster"></span>
+      <span class="mozzie-badge">by MozzieGM</span>
+      <div id="versao">
+        <div class="versao-texto" translation-key="versao-footer"></div>
+        <div class="versao" title="Versão"></div>
+
+        <!-- FOOTER -->
+        <div id="footer" class="footer">
+          <div id="translate">
+            <div class="translate" translation-key="idioma"></div>
+            <div class="translate-option" id="traducao-pt">PT-BR</div>
+            <div class="translate-option" id="traducao-en">EN</div>
+            <div class="translate-option" id="traducao-es">ES</div>
+            <div class="translate-option" id="traducao-fr">FR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="header-icon-ring"><img src="images/icon_48.png" alt="MozzieGM GC" class="header-icon" /></span>
+  </div>
+  <div class="containerMensagem">
+    <div class="caixaMensagem" translation-key="mensagemDeEntendi"></div>
+    <button id="botaoEntendi" class="CustomButton CustomButton--secondary">
+      <span class="CustomButton__text" translation-key="botaoDeEntendi"></span>
+    </button>
+  </div>
+
+  <div class="conteudo">
+    <!-- MENU -->
+    <div class="menu">
+      <ul>
+        <li id="link-novidades" style="display: none">
+          <img src="images/menu/novidades.svg" alt="Novidades" class="img-menu" />
+          <a href="#novidades" translation-key="news-menu"></a>
+        </li>
+        <li id="link-geral" class="active">
+          <img src="images/menu/geral.svg" alt="Geral" class="img-menu" />
+          <a href="#geral" translation-key="geral"></a>
+        </li>
+        <li id="link-sons">
+          <img src="images/menu/som.svg" alt="Som" class="img-menu" />
+          <a href="#sons" translation-key="sons"></a>
+        </li>
+        <li id="link-mapas" style="display: none">
+          <img src="images/menu/lobby.svg" alt="Mapas" class="img-menu" />
+          <a href="#mapas" translation-key="mapas"></a>
+        </li>
+        <li id="link-lobby">
+          <img src="images/menu/lobby.svg" alt="Lobby" class="img-menu" />
+          <a href="#lobby" translation-key="lobby"></a>
+        </li>
+        <li id="link-complete">
+          <img src="images/menu/complete.svg" alt="Complete" class="img-menu" />
+          <a href="#complete" translation-key="complete"></a>
+        </li>
+        <li id="link-integracoes" style="display: none">
+          <img src="images/menu/integracoes.svg" alt="Integrações" class="img-menu" />
+          <a href="#integracoes" translation-key="discord"></a>
+        </li>
+        <li id="link-backup">
+          <img src="images/menu/backup.svg" alt="Backup" class="img-menu" />
+          <a href="#backup" translation-key="backup"></a>
+        </li>
+        <li id="link-contato" style="display: none">
+          <img src="images/menu/contato.svg" alt="Contato" class="img-menu" />
+          <a href="#contato" translation-key="contato"></a>
+        </li>
+        <li id="link-sobre">
+          <img src="images/menu/sobre.svg" alt="Sobre" class="img-menu" />
+          <a href="#sobre" translation-key="sobre"></a>
+        </li>
+        <li id="link-doacao" style="display: none">
+          <img src="images/menu/doacao.svg" alt="Doação" class="img-menu" />
+          <a href="#doacao" translation-key="donate"></a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="searchbar">
+      <svg class="searchbar-icon" width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.75 2.125C4.6434 2.125 2.125 4.6434 2.125 7.75C2.125 10.8566 4.6434 13.375 7.75 13.375C9.30347 13.375 10.7089 12.7461 11.7275 11.7275C12.7461 10.7089 13.375 9.30347 13.375 7.75C13.375 4.6434 10.8566 2.125 7.75 2.125ZM0.875 7.75C0.875 3.95304 3.95304 0.875 7.75 0.875C11.547 0.875 14.625 3.95304 14.625 7.75C14.625 9.42319 14.0266 10.9575 13.0333 12.1494L16.9419 16.0581L16.0581 16.9419L12.1494 13.0333C10.9575 14.0266 9.42319 14.625 7.75 14.625C3.95304 14.625 0.875 11.547 0.875 7.75Z" fill="#a89bbf"></path></svg>
+      <input type="text" id="mgSearch" translation-key="buscar-configuracoes" translation-attr="placeholder" autocomplete="off" />
+      <span class="search-count" id="mgSearchCount"></span>
+      <button class="search-clear" id="mgSearchClear" title="Limpar">✕</button>
+    </div>
+
+    <!-- NOVIDADES (inativa — código mantido) -->
+    <div class="pagina" id="novidades">
+      <div>
+        <h3 class="subtitulo">Estatísticas do Jogador!</h3>
+        <img src="images/news/stats_collapsed.jpg" alt="Estatísticas do Jogador" />
+        <p>
+          Visualize suas estatísticas detalhadas de desempenho nos mapas!
+          Descubra qual é o seu <strong>melhor mapa</strong> e o <strong>pior mapa</strong>:
+          <br><br>
+          🏆 <strong>Melhor mapa:</strong> de_dust2 — 55,56% de win rate<br>
+          ⚠️ <strong>Pior mapa:</strong> de_inferno — 10% de win rate
+          <br><br>
+          Acompanhe sua taxa de vitórias e partidas jogadas em cada mapa para aprimorar suas estratégias.
+        </p>
+        <img src="images/news/stats_expand.jpg" alt="Estatísticas do Jogador" />
+      </div>
+
+      <div>
+        <h3 class="subtitulo">Completar partida!</h3>
+        <img src="images/news/complete.jpg" alt="Estatísticas" />
+        <p>
+          Escolha quando completar partidas, e quais mapas você mais gosta,
+          chega de ficar entrando em partidas 14x15.
+        </p>
+      </div>
+      <div>
+        <h3 class="subtitulo">Nova função estatistica!</h3>
+        <img src="images/news/stats.jpg" alt="Estatísticas" />
+        <p>
+          Agora você consegue dar aquela olhada antes de jogar contra seu
+          oponente, quantas partidas ele já jogou, indice de vitórias, e tempo
+          da conta :). Assim fica mais fácil decidir e não jogar contra
+          smurfs.
+        </p>
+      </div>
+      <div>
+        <h3 class="subtitulo">Nova lobby na GC!</h3>
+        <img src="images/news/novo-layout-gc.png" alt="Status bar" />
+        <p>
+          A GC está melhorando e adicionando novas features! Com isso a
+          extensão parou de funcionar em vários pontos. Já estamos cientes e
+          desativamos boa parte da extensão para que não ocorra erros durante
+          o uso da GC. Assim que possível, tudo estará funcionando como deve
+          :)
+        </p>
+      </div>
+      <div>
+        <h3 class="subtitulo">Barra de progresso!</h3>
+        <h3>Barra de progresso!</h3>
+        <img src="images/news/nav-status.jpg" alt="Status bar" />
+        <p>
+          Veja sua evolução com a barra em todos os lugares, voce vai saber
+          quantos pontos faltam para você cair, ou subir de level, tambem foi
+          adicionado o KDR e a foto de perfil.
+        </p>
+      </div>
+      <div>
+        <h3 class="subtitulo">Salas compactadas!</h3>
+        <h3>Salas compactadas!</h3>
+        <img src="images/news/compact-lobby.jpg" alt="Lobby compacta" />
+        <p>
+          Agora você pode compactar sua sala, antes era possível ver apenas 8
+          salas por vez, com o modo compacto podemos ver 20 salas dependendo
+          do seu monitor.
+        </p>
+      </div>
+    </div>
+
+    <!-- GERAL -->
+    <div class="pagina ativo" id="geral">
+      <h3 class="subtitulo" translation-key="automacoes"></h3>
+      <div class="ready-delay-setting">
+        <label class="container" for="autoAceitarReady" title="Aceita automaticamente o ready">
+          <p class="descricao" translation-key="aceitar-ready"></p>
+          <input type="checkbox" id="autoAceitarReady" />
+          <span class="checkmark"></span>
+        </label>
+        <div class="ready-delay-slider-wrapper"
+          title="0 aceita o ready com 1ms. De 1 a 10 exibe o popup e espera o tempo escolhido.">
+          <div class="ready-delay-slider-header">
+            <span class="ready-delay-slider-label">Delay do Ready</span>
+            <span class="ready-delay-slider-value" id="autoAceitarReadyDelayValue">0s</span>
+          </div>
+          <input type="range" id="autoAceitarReadyDelaySeconds" min="0" max="10" step="1" value="0" />
+        </div>
+      </div>
+
+      <label class="container" for="autoCopiarIp" title="Copia o IP automáticamente assim que disponível"
+        style="display: none">
+        <p class="descricao" translation-key="copiar-ip"></p>
+        <input type="checkbox" id="autoCopiarIp" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="autoConcordarTermosRanked" title="Aceita automaticamente os termos da ranked">
+        <p class="descricao" translation-key="aceitar-termos-da-ranked"></p>
+        <input type="checkbox" id="autoConcordarTermosRanked" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="autoCopyLobbyLink" title="Copia automaticamente o link da lobby">
+        <p class="descricao" translation-key="auto-copy-lobby-link"></p>
+        <input type="checkbox" id="autoCopyLobbyLink" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="autoMostrarIp" title="Mostra o IP assim que disponível">
+        <p class="descricao" translation-key="auto-mostrar-ip"></p>
+        <input type="checkbox" id="autoMostrarIp" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="autoKickNegativados" title="Auto remover jogadores com anotação negativa">
+        <p class="descricao" translation-key="auto-kick-negativados"></p>
+        <input type="checkbox" id="autoKickNegativados" />
+        <span class="checkmark"></span>
+      </label>
+      <br />
+      <h3 class="subtitulo" translation-key="melhorias"></h3>
+
+      <label class="container" for="autoDarkMode" title="Modo escuro / Dark mode">
+        <p class="descricao" translation-key="dark-mode"></p>
+        <input type="checkbox" id="autoDarkMode" />
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container" for="autoInfoPlayer"
+        title="Informações do jogador na sala / Player information in lobby">
+        <p class="descricao" translation-key="lobby-informations"></p>
+        <input type="checkbox" id="autoInfoPlayer" />
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container" for="autoCompactMode" title="Modo compacto / Compact mode">
+        <p class="descricao" translation-key="compact-mode"></p>
+        <input type="checkbox" id="autoCompactMode" />
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container" for="autoHideFilter" title="Ocultar Filtro / Hide Filter">
+        <p class="descricao" translation-key="hide-filter-lobby"></p>
+        <input type="checkbox" id="autoHideFilter" />
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container" for="autoFixarMenuLobby"
+        title="Trava a lobby e os desáfios no topo melhorando a usabilidade">
+        <p class="descricao" translation-key="fixar-menu-do-lobby"></p>
+        <input type="checkbox" id="autoFixarMenuLobby" />
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container" for="ocultarSugestaoDeLobbies" title="Oculta a sugestões de lobbies para entrar">
+        <p class="descricao" translation-key="ocultar-sugestao-de-lobbies"></p>
+        <input type="checkbox" id="ocultarSugestaoDeLobbies" />
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container" for="ocultarNotificacaoComplete" title="Oculta as notificações de complete">
+        <p class="descricao" translation-key="ocultar-notificacao-complete"></p>
+        <input type="checkbox" id="ocultarNotificacaoComplete" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="mostrarLevelProgress"
+        title="Mostra seu Level, Rating atual, e quantos pontos é preciso para chegar ao proximo Level.">
+        <p class="descricao" translation-key="mostrar-seu-progresso-no-menu"></p>
+        <input type="checkbox" id="mostrarLevelProgress" />
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container" for="warmupTimer"
+        title="Mostra um timer na janela de lobby com o tempo restante de aquecimento..">
+        <p class="descricao" translation-key="mostrar-warmup-timer"></p>
+        <input type="checkbox" id="warmupTimer" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="showStats" title="Exibir estatísticas do jogador na Lobby">
+        <p class="descricao" translation-key="show-stats"></p>
+        <input type="checkbox" id="showStats" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="disableShowPlayerSoloStats" title="Desativar estatísticas solo do jogador na Lobby">
+        <p class="descricao" translation-key="disable-show-player-solo-stats"></p>
+        <input type="checkbox" id="disableShowPlayerSoloStats" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="disableShowMapStatsSuggestions" title="Desativar sugestões de estatísticas de mapas na Lobby">
+        <p class="descricao" translation-key="disable-show-map-stats-suggestions"></p>
+        <input type="checkbox" id="disableShowMapStatsSuggestions" />
+        <span class="checkmark"></span>
+      </label>
+    </div>
+
+    <!-- LOBBY -->
+    <div class="pagina" id="lobby">
+      <h3 class="subtitulo" translation-key="lobby"></h3>
+      <label class="container" for="lobbyPrivada" title="Lobby privada" translation-key="lobby-privada"
+        translation-attr="title">
+        <p class="descricao" translation-key="lobby-privada"></p>
+        <input type="checkbox" id="lobbyPrivada" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="filtrarKdrMedioLobby" title="Filtrar por KDR médio da lobby">
+        <p class="descricao" translation-key="filter-lobby-by-average-kdr"></p>
+        <input type="checkbox" id="filtrarKdrMedioLobby" />
+        <span class="checkmark"></span>
+      </label>
+      <br />
+      <h3 class="subtitulo" translation-key="jogar-apenas-com"></h3>
+      <div class="row">
+        <div class="column">
+          <label class="container" for="lobbyTodos" title="Todos" translation-key="todos" translation-attr="title">
+            <p class="descricao" translation-key="todos"></p>
+            <input type="radio" id="lobbyTodos" name="jogarCom" value="0" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="column">
+          <label class="container" for="lobbyVerificados" title="Verificados" translation-key="verificados"
+            translation-attr="title">
+            <p class="descricao" translation-key="verificados"></p>
+            <input type="radio" id="lobbyVerificados" name="jogarCom" value="2" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label class="container" for="lobbyVerificadosOuPrime" title="Verificados ou Prime"
+            translation-key="verificados-ou-prime" translation-attr="title">
+            <p class="descricao" translation-key="verificados-ou-prime"></p>
+            <input type="radio" id="lobbyVerificadosOuPrime" name="jogarCom" value="1" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      <br />
+      <h3 class="subtitulo" id="prevetoTitle" translation-key="pre-vetos-3-escolhas"></h3>
+      <div class="row">
+        <div class="column">
+          <label class="container" for="preVetode_dust2">
+            <p class="descricao">de_dust2</p>
+            <input type="checkbox" id="preVetode_dust2" codigo="1" />
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container" for="preVetode_nuke">
+            <p class="descricao">de_nuke</p>
+            <input type="checkbox" id="preVetode_nuke" codigo="2" />
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container" for="preVetode_train">
+            <p class="descricao">de_train</p>
+            <input type="checkbox" id="preVetode_train" codigo="3" />
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container" for="preVetode_mirage">
+            <p class="descricao">de_mirage</p>
+            <input type="checkbox" id="preVetode_mirage" codigo="5" />
+            <span class="checkmark"></span>
+          </label>
+
+          <!-- <label class="container" for="preVetode_cache">
+              <p class="descricao">de_cache</p>
+              <input type="checkbox" id="preVetode_cache" codigo="6" />
+              <span class="checkmark"></span>
+            </label> -->
+
+          <label class="container" for="preVetode_overpass">
+            <p class="descricao">de_overpass</p>
+            <input type="checkbox" id="preVetode_overpass" codigo="7" />
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container" for="preVetode_inferno">
+            <p class="descricao">de_inferno</p>
+            <input type="checkbox" id="preVetode_inferno" codigo="8" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+
+        <div class="column">
+          <label class="container" for="preVetode_vertigo">
+            <p class="descricao">de_vertigo</p>
+            <input type="checkbox" id="preVetode_vertigo" codigo="10" />
+            <span class="checkmark"></span>
+          </label>
+
+          <!-- <label class="container" for="preVetode_cbble_classic">
+              <p class="descricao">de_cbble_classic</p>
+              <input type="checkbox" id="preVetode_cbble_classic" codigo="11" />
+              <span class="checkmark"></span>
+            </label> -->
+
+          <label class="container" for="preVetode_ancient">
+            <p class="descricao">de_ancient</p>
+            <input type="checkbox" id="preVetode_ancient" codigo="12" />
+            <span class="checkmark"></span>
+          </label>
+
+          <!-- <label class="container" for="preVetode_tuscan">
+              <p class="descricao">de_tuscan</p>
+              <input type="checkbox" id="preVetode_tuscan" codigo="13" />
+              <span class="checkmark"></span>
+            </label> -->
+
+          <label class="container" for="preVetode_anubis">
+            <p class="descricao">de_anubis</p>
+            <input type="checkbox" id="preVetode_anubis" codigo="14" />
+            <span class="checkmark"></span>
+          </label>
+
+          <!-- <label class="container" for="preVetode_cache_old">
+              <p class="descricao">de_cache_old</p>
+              <input type="checkbox" id="preVetode_cache_old" codigo="16" />
+              <span class="checkmark"></span>
+            </label> -->
+        </div>
+      </div>
+      <h3 class="subtitulo" translation-key="chat"></h3>
+      <label class="container" for="ocultarChat" title="Ocultar Chat" translation-key="ocultar-chat"
+        translation-attr="title">
+        <p class="descricao" translation-key="ocultar-chat"></p>
+        <input type="checkbox" id="ocultarChat" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" for="chatFixoDireita" title="Chat fixo na direita" translation-key="chat-fixo-direita"
+        translation-attr="title">
+        <p class="descricao" translation-key="chat-fixo-direita"></p>
+        <input type="checkbox" id="chatFixoDireita" />
+        <span class="checkmark"></span>
+      </label>
+      <br />
+    </div>
+
+    <div class="pagina" id="complete">
+      <h3 class="subtitulo" translation-key="complete"></h3>
+      <p translation-key="complete-rounds-minimos"></p>
+      <input type="range" title="Rounds" id="slider-rounds-min" name="rounds-min" min="0" max="26" value="0" />
+      <h3 style="display: inline-block; margin-right: 10px" id="rounds-min">
+        0 rounds
+      </h3>
+
+      <p translation-key="complete-max-diff"></p>
+
+      <input type="range" title="Rounds" id="slider-rounds-diff" name="rounds-diff" min="0" max="13" value="13" />
+      <h3 style="display: inline-block; margin-right: 10px" id="rounds-diff">
+        13 rounds
+      </h3>
+
+      <p translation-key="complete-max-rounds"></p>
+
+      <input type="range" title="Rounds" id="slider-rounds-max" name="rounds-max" min="0" max="12" value="12" />
+      <h3 style="display: inline-block; margin-right: 10px" id="rounds-max">
+        12 rounds
+      </h3>
+
+      <h3 class="subtitulo" translation-key="complete-mapas"></h3>
+
+      <div class="row">
+        <div class="column">
+          <label class="container" for="completede_dust2">
+            <p class="descricao">de_dust2</p>
+            <input type="checkbox" id="completede_dust2" codigo="1" />
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container" for="completede_nuke">
+            <p class="descricao">de_nuke</p>
+            <input type="checkbox" id="completede_nuke" codigo="2" />
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container" for="completede_train">
+            <p class="descricao">de_train</p>
+            <input type="checkbox" id="completede_train" codigo="3" />
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container" for="completede_mirage">
+            <p class="descricao">de_mirage</p>
+            <input type="checkbox" id="completede_mirage" codigo="5" />
+            <span class="checkmark"></span>
+          </label>
+
+          <!-- <label class="container" for="completede_cache">
+              <p class="descricao">de_cache</p>
+              <input type="checkbox" id="completede_cache" codigo="6" />
+              <span class="checkmark"></span>
+            </label> -->
+
+          <label class="container" for="completede_overpass">
+            <p class="descricao">de_overpass</p>
+            <input type="checkbox" id="completede_overpass" codigo="7" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="column">
+          <label class="container" for="completede_inferno">
+            <p class="descricao">de_inferno</p>
+            <input type="checkbox" id="completede_inferno" codigo="8" />
+            <span class="checkmark"></span>
+          </label>
+
+          <label class="container" for="completede_vertigo">
+            <p class="descricao">de_vertigo</p>
+            <input type="checkbox" id="completede_vertigo" codigo="10" />
+            <span class="checkmark"></span>
+          </label>
+          <!-- <label class="container" for="completede_cbble_classic">
+              <p class="descricao">de_cbble_classic</p>
+              <input type="checkbox" id="completede_cbble_classic" codigo="11" />
+              <span class="checkmark"></span>
+            </label> -->
+          <label class="container" for="completede_ancient">
+            <p class="descricao">de_ancient</p>
+            <input type="checkbox" id="completede_ancient" codigo="12" />
+            <span class="checkmark"></span>
+          </label>
+
+          <!-- <label class="container" for="completede_tuscan">
+              <p class="descricao">de_tuscan</p>
+              <input type="checkbox" id="completede_tuscan" codigo="13" />
+              <span class="checkmark"></span>
+            </label> -->
+
+          <label class="container" for="completede_anubis">
+            <p class="descricao">de_anubis</p>
+            <input type="checkbox" id="completede_anubis" codigo="14" />
+            <span class="checkmark"></span>
+          </label>
+
+          <!-- <label class="container" for="completede_cache_old">
+              <p class="descricao">de_cache_old</p>
+              <input type="checkbox" id="completede_cache_old" codigo="16" />
+              <span class="checkmark"></span>
+            </label> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SONS -->
+    <div class="pagina" id="sons">
+      <h3 class="subtitulo" translation-key="sons"></h3>
+      <div style="margin-bottom: 24px;">
+        <div class="form-input">
+          <span translation-key="ao-aceitar-ready"></span>
+          <div class="input-container">
+            <select id="somReady" title="sons"></select>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="testarSomReady" translation-key="testar"></button>
+        <div id="p-customSomReady" class="form-input" style="display: none; margin-top: 10px">
+          <span translation-key="url-som-customizado"></span>
+          <div class="input-container">
+            <input type="text" title="url" id="customSomReady" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-bottom: 24px;">
+        <div class="form-input">
+          <span translation-key="ao-ser-expulso"></span>
+          <div class="input-container">
+            <select id="somKicked" title="sons"></select>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="testarSomKicked" translation-key="testar"></button>
+        <div id="p-customSomKicked" class="form-input" style="display: none; margin-top: 10px">
+          <span translation-key="url-som-customizado"></span>
+          <div class="input-container">
+            <input type="text" title="url" id="customSomKicked" />
+          </div>
+        </div>
+      </div>
+      <div style="margin-bottom: 24px;">
+        <div class="form-input">
+          <span translation-key="ao-faltar-no-warmup"></span>
+          <div class="input-container">
+            <select id="somWarmup" title="sons"></select>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="testarSomWarmup" translation-key="testar"></button>
+        <div id="p-customSomWarmup" class="form-input" style="display: none; margin-top: 10px">
+          <span translation-key="url-som-customizado"></span>
+          <div class="input-container">
+            <input type="text" title="url" id="customSomWarmup" />
+          </div>
+        </div>
+        <p>
+          <span translation-key="som-warmup-tempo"></span>: <b id="warmupSoundTimeValue">10s</b>
+        </p>
+        <input type="range" title="warmupSoundTime" id="warmupSoundTime" name="warmupSoundTime" min="0" max="180" value="10" />
+      </div>
+      <div>
+        <p>
+          <span translation-key="volume"></span>: <b id="volumeValue">50%</b>
+        </p>
+        <input type="range" title="volume" id="volume" name="volume" min="0" max="100" value="50" />
+      </div>
+      <div>
+        <p translation-key="sons-myinstants-linha-1"></p>
+        <p translation-key="sons-myinstants-linha-2"></p>
+      </div>
+    </div>
+
+    <!-- DISCORD -->
+    <div class="pagina" id="integracoes">
+      <h3 class="subtitulo" translation-key="discord"></h3>
+      <div>
+        <div class="form-input">
+          <span>Nome do servidor</span>
+          <div class="input-container">
+            <input type="text" id="campoWebhookName" translation-key="nome-servidor-discord"
+              translation-attr="placeholder" class="input-form-gray form-control" />
+          </div>
+          <span translation-key="url"></span>
+          <div class="input-container">
+            <input type="text" id="campoWebhookLink" translation-key="cole-aqui-a-url-do-seu-webhook"
+              translation-attr="placeholder" class="input-form-gray form-control" />
+          </div>
+          <button class="btn btn-success" id="addWebhook">
+            Adicionar server
+          </button>
+        </div>
+
+        <div id="group-add-server">
+          <hr />
+          <div class="input-container">
+            <select id="serversSelect" title="Discord Servers"></select>
+          </div>
+          <button class="btn btn-success" id="testarWebhook" translation-key="testar-e-salvar"></button>
+          <button class="btn btn-warning" id="botaoLimparDiscord" translation-key="redefinir"></button>
+          <div>
+            <p style="display: inline-block" translation-key="status-da-url"></p>
+            <p style="display: inline-block" id="statusWebhook"></p>
+          </div>
+
+          <div id="divDoDiscord" hidden="true">
+            <h3 class="subtitulo" translation-key="enviar-automaticamente-no-discord"></h3>
+            <label class="container" for="enviarLinkLobby"
+              translation-key="envia-automaticamente-link-lobby-discord-title" translation-attr="title">
+              <p class="descricao" translation-key="lobby-link-kd"></p>
+              <input type="checkbox" id="enviarLinkLobby" />
+              <span class="checkmark"></span>
+            </label>
+            <label class="container" for="enviarPartida" translation-key="envia-automaticamente-partida-title"
+              translation-attr="title" title="">
+              <p class="descricao" translation-key="partida-ip-times"></p>
+              <input type="checkbox" id="enviarPartida" />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACKUP -->
+    <div class="pagina" id="backup">
+      <h3 class="subtitulo">
+        <div translation-key="backup"></div>
+      </h3>
+      <div class="export">
+        <h3 translation-key="comoexportar-titulo"></h3>
+        <span translation-key="comoexportar-texto"></span>
+        <button class="btn btn-warning" id="exportButton" translation-key="exportar" style="margin-top: 10px"></button>
+      </div>
+      <div class="import">
+        <h3 translation-key="comoimportar-titulo"></h3>
+        <span translation-key="comoimportar-texto"></span>
+        <button class="btn btn-warning" id="importButton" translation-key="importar" style="margin-top: 10px"></button>
+        <input type="file" title="import" id="importOrig" accept=".json" style="display: none" />
+      </div>
+    </div>
+
+    <!-- CONTATO (inativa — código mantido) -->
+    <div class="pagina" id="contato">
+    </div>
+
+    <!-- SOBRE -->
+    <div class="pagina" id="sobre">
+      <br />
+      <h3 class="subtitulo" translation-key="versao"></h3>
+      <p class="descricao versao"></p>
+    </div>
+
+    <!-- DOACAO (inativa — blocos pessoais dos autores originais removidos) -->
+    <div class="pagina" id="doacao">
+      <h3 class="subtitulo" translation-key="faca-sua-doacao"></h3>
+    </div>
+  </div>
+</body>
+<script src="index.js"></script>
+
+</html>
